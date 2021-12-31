@@ -18,7 +18,7 @@ export class Initialize extends Command {
 
     if (user === undefined) {
       cli.info(`
-Looks like you are using this cli for the first time. We will need some
+Looks like you are using the cli for the first time. We will need some
 information about you to give the better experience.
       `)
 

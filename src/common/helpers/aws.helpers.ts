@@ -1,5 +1,9 @@
 import {fromSSO} from '@aws-sdk/credential-provider-sso'
 import {AWSError, EC2, SSM} from 'aws-sdk'
+
+import IAWSConfiguration from '../../interfaces/aws.config.interface'
+import AWSConfiguration from '../../models/aws.config.model'
+
 import {
   StartSessionRequest,
   StartSessionResponse,
@@ -7,14 +11,15 @@ import {
   TerminateSessionResponse,
 } from 'aws-sdk/clients/ssm'
 
-import {AWS_SSM_MAX_INSTANCES, SUPPORTED_AWS_PROFILE_REGION_MAP} from '../../constants'
+import {AWS_SSM_MAX_INSTANCES} from '../../constants'
 
 const getCredentials = async (profile: string): Promise<any> => {
   return fromSSO({profile: profile})()
 }
 
 const getRegion = (profile: string): string => {
-  return SUPPORTED_AWS_PROFILE_REGION_MAP[`${profile}`]
+  const awsConfiguration: IAWSConfiguration = new AWSConfiguration()
+  return awsConfiguration.profileRegionMap[`${profile}`]
 }
 
 const getSSMManagedEC2Instances = async (profile: string): Promise<any> => {

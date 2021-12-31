@@ -2,6 +2,9 @@ import {Command} from '@oclif/core'
 import {cli} from 'cli-ux'
 import {SSM} from 'aws-sdk'
 
+import IAWSConfiguration from '../../interfaces/aws.config.interface'
+import AWSConfiguration from '../../models/aws.config.model'
+
 import {CLI_STORAGE} from '../../constants'
 import {
   createSSMSession,
@@ -33,7 +36,8 @@ export class EC2InstanceConnect extends Command {
   static description = 'Connect to EC2 instance via SSM'
 
   async run(): Promise<void> {
-    const {profile} = await selectAWSProfile()
+    const awsConfiguration: IAWSConfiguration = new AWSConfiguration()
+    const {profile} = await selectAWSProfile(awsConfiguration)
 
     cli.action.start(`${Chalk.green('?')} ${Chalk.bold(`Fetching EC2 instances running in ${getRegion(profile)}`)}`)
     const runningSSMConnectedEC2Instances: {name: string; value: string}[] = await getRunningSSMConnectedEC2Instances(

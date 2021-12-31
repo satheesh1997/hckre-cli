@@ -1,16 +1,14 @@
-import {cli} from 'cli-ux'
 import Inquirer = require('inquirer')
-import {SUPPORTED_AWS_PROFILE_CHOICES} from '../constants'
 
-const selectAWSProfile = async (): Promise<any> => {
-  cli.info('\nPls, select a profile which you can allowed to use!!')
-  cli.info('You might get forbidden error if you are not allowed to use the selected profile.\n')
+import IAWSConfiguration from '../interfaces/aws.config.interface'
+
+const selectAWSProfile = async (config: IAWSConfiguration): Promise<any> => {
   return Inquirer.prompt([
     {
       name: 'profile',
       message: 'Select an AWS profile',
       type: 'list',
-      choices: SUPPORTED_AWS_PROFILE_CHOICES,
+      choices: config.profiles,
     },
   ])
 }
