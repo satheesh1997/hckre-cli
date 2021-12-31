@@ -96,7 +96,7 @@ const installAWSSSMPlugin = new Listr([
     enabled: ctx => !ctx.foundExistingInstallation && process.platform === 'darwin',
     task: () => {
       ChildProcess.execSync(
-        'curl https://s3.amazonaws.com/session-manager-downloads/plugin/latest/mac/sessionmanager-bundle.zip',
+        'curl https://s3.amazonaws.com/session-manager-downloads/plugin/latest/mac/sessionmanager-bundle.zip -o sessionmanager-bundle.zip',
         {
           cwd: CLI_STORAGE,
           stdio: 'ignore',

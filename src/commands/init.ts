@@ -13,6 +13,18 @@ export class Initialize extends Command {
   static description = 'Initialize CLI tool'
 
   async run(): Promise<void> {
+    if (!existsSync(CLI_STORAGE)) {
+      cli.action.start('Creating storage')
+      mkdirpSync(CLI_STORAGE)
+      cli.action.stop('OK')
+    }
+
+    if (!existsSync(this.config.configDir)) {
+      cli.action.start('Creating config storage')
+      mkdirpSync(this.config.configDir)
+      cli.action.stop('OK')
+    }
+
     const configuration: Configuration = new Configuration(this.config)
     const user: IUser | undefined = configuration.getUser()
 
@@ -35,12 +47,6 @@ information about you to give the better experience.
           `\n\nHey ${chalk.bold(chalk.greenBright(user.name))}, \n\nLooks like the cli is already initialized !!`,
         ),
       )
-    }
-
-    if (!existsSync(CLI_STORAGE)) {
-      cli.action.start('\nCreating storage')
-      mkdirpSync(CLI_STORAGE)
-      cli.action.stop('OK')
     }
 
     cli.info('')

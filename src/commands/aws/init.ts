@@ -22,7 +22,7 @@ export class Initialize extends Command {
           task: () => installAWSSSMPlugin,
         },
         {
-          title: 'Credentials',
+          title: 'Credentials File',
           skip: () => existsSync(AWS_CREDENTIALS_STORAGE) && existsSync(AWS_CREDENTIALS_STORAGE + '/credentials'),
           task: () => {
             if (!existsSync(AWS_CREDENTIALS_STORAGE)) {
@@ -35,7 +35,7 @@ export class Initialize extends Command {
           },
         },
         {
-          title: 'Configuration',
+          title: 'Configuration File',
           skip: () => existsSync(AWS_CREDENTIALS_STORAGE) && existsSync(AWS_CREDENTIALS_STORAGE + '/config'),
           task: () => {
             if (!existsSync(AWS_CREDENTIALS_STORAGE)) {

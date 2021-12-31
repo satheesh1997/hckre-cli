@@ -4,7 +4,7 @@ export const CLI_STORAGE: string = os.homedir + '/.hckre'
 export const AWS_CREDENTIALS_STORAGE: string = os.homedir + '/.aws'
 export const AWS_SSM_MAX_INSTANCES = 200
 
-export const DEFAULT_AWS_CONFIG = `[profile SupportUserAccess-981015344048]
+export const DEFAULT_AWS_CONFIG = `[profile SupportUser-981015344048]
 sso_start_url = https://hackerearth.awsapps.com/start
 sso_region = ap-southeast-1
 sso_account_id = 981015344048
