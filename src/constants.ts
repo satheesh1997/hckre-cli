@@ -2,13 +2,21 @@ import os = require('os')
 
 export const CLI_STORAGE: string = os.homedir + '/.hckre'
 export const AWS_CREDENTIALS_STORAGE: string = os.homedir + '/.aws'
+export const AWS_SSM_MAX_INSTANCES = 200
 
-export const SUPPORTED_AWS_PROFILE_CHOICES: {name: string}[] = [
-  {name: 'Singapore-PowerAccess'},
-  {name: 'Singapore-SupportAccess'},
-  {name: 'Mumbai-AdministratorAccess'},
-  {name: 'Mumbai-SupportAccess'},
+export const SUPPORTED_AWS_PROFILE_CHOICES: {name: string; value: string}[] = [
+  {value: 'Singapore-PowerAccess', name: 'PowerAccess (Singapore)'},
+  {value: 'Singapore-SupportAccess', name: 'SupportAccess (Singapore)'},
+  {value: 'Mumbai-AdministratorAccess', name: 'AdministratorAccess (Mumbai)'},
+  {value: 'Mumbai-SupportAccess', name: 'SupportAccess (Mumbai)'},
 ]
+
+export const SUPPORTED_AWS_PROFILE_REGION_MAP: {[key: string]: string} = {
+  'Singapore-PowerAccess': 'ap-southeast-1',
+  'Singapore-SupportAccess': 'ap-southeast-1',
+  'Mumbai-AdministratorAccess': 'ap-south-1',
+  'Mumbai-SupportAccess': 'ap-south-1',
+}
 
 export const DEFAULT_AWS_CONFIG = `[profile Singapore-SupportAccess]
 sso_start_url = https://hackerearth.awsapps.com/start

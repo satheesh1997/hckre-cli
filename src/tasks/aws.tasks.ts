@@ -3,7 +3,7 @@ import AWSProcess from '../processes/aws.process'
 
 import ChildProcess = require('child_process')
 import Listr = require('listr')
-import {writeFileSync} from 'fs-extra'
+import {existsSync, writeFileSync} from 'fs-extra'
 
 const installAWSCommandLine = new Listr([
   {
@@ -71,4 +71,57 @@ const installAWSCommandLine = new Listr([
   },
 ])
 
-export {installAWSCommandLine}
+const installAWSSSMPlugin = new Listr([
+  {
+    title: 'Check',
+    task: ctx => {
+      ctx.foundExistingInstallation = existsSync(`${CLI_STORAGE}/session-manager-plugin`)
+    },
+  },
+  {
+    title: 'Copy',
+    enabled: ctx => !ctx.foundExistingInstallation && process.platform === 'linux',
+    task: () => {
+      ChildProcess.execSync(
+        'curl https://hckre-cli.s3.ap-south-1.amazonaws.com/assets/linux-amd64-session-manager-plugin -o session-manager-plugin',
+        {
+          cwd: CLI_STORAGE,
+          stdio: 'ignore',
+        },
+      )
+    },
+  },
+  {
+    title: 'Download',
+    enabled: ctx => !ctx.foundExistingInstallation && process.platform === 'darwin',
+    task: () => {
+      ChildProcess.execSync(
+        'curl https://s3.amazonaws.com/session-manager-downloads/plugin/latest/mac/sessionmanager-bundle.zip',
+        {
+          cwd: CLI_STORAGE,
+          stdio: 'ignore',
+        },
+      )
+    },
+  },
+  {
+    title: 'Install',
+    enabled: ctx => !ctx.foundExistingInstallation && process.platform === 'darwin',
+    task: () => {
+      ChildProcess.execSync('unzip sessionmanager-bundle.zip', {cwd: CLI_STORAGE})
+      ChildProcess.execSync('./sessionmanager-bundle/install -i ./sessionmanagerplugin -b ./session-manager-plugin', {
+        cwd: CLI_STORAGE,
+      })
+    },
+  },
+  {
+    title: 'Clean',
+    enabled: ctx => !ctx.foundExistingInstallation && process.platform === 'darwin',
+    task: () => {
+      ChildProcess.execSync('rm -rf sessionmanager-bundle.zip', {cwd: CLI_STORAGE})
+      ChildProcess.execSync('rm -rf sessionmanager-bundle', {cwd: CLI_STORAGE})
+    },
+  },
+])
+
+export {installAWSCommandLine, installAWSSSMPlugin}

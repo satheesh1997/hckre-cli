@@ -3,7 +3,7 @@ import {existsSync, mkdirpSync, writeFileSync} from 'fs-extra'
 
 import {AWS_CREDENTIALS_STORAGE, DEFAULT_AWS_CONFIG} from '../../constants'
 import {printCommandError} from '../../messages/error.messages'
-import {installAWSCommandLine} from '../../tasks/aws.tasks'
+import {installAWSCommandLine, installAWSSSMPlugin} from '../../tasks/aws.tasks'
 
 import Listr = require('listr')
 
@@ -16,6 +16,10 @@ export class Initialize extends Command {
         {
           title: 'CommandLine Interface',
           task: () => installAWSCommandLine,
+        },
+        {
+          title: 'SSM Plugin',
+          task: () => installAWSSSMPlugin,
         },
         {
           title: 'Credentials',
