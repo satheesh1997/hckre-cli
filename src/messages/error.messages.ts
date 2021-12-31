@@ -9,4 +9,11 @@ const printCommandError = (): void => {
   cli.info('')
 }
 
-export {printCommandError}
+const printUnsupportedPlatformError = (): void => {
+  cli.info('')
+  cli.info(Chalk.redBright(Chalk.bold('Oops!!')))
+  cli.info(Chalk.yellow('\nCurrently this platform is not supported :('))
+  cli.info('')
+}
+
+export {printCommandError, printUnsupportedPlatformError}

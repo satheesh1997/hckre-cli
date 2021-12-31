@@ -1,6 +1,6 @@
 {
   "name": "hckre",
-  "description": "One-stop CLI for HackerEarth Internal Users",
+  "description": "HackerEarth CLI 2.0 (Engineering & Support)",
   "version": "0.0.0",
   "author": "HackerEarth <engineering@hackerearth.com>",
   "bin": {
@@ -62,8 +62,8 @@
     ],
     "topicSeparator": " ",
     "topics": {
-      "hello": {
-        "description": "Say hello to the world and others"
+      "aws": {
+        "description": "AWS command line utils"
       }
     }
   },
