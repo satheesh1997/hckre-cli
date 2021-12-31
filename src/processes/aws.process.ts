@@ -9,8 +9,8 @@ const AWSProcess = {
   isLoaded: (): boolean => {
     return existsSync(`${CLI_STORAGE}/aws-cli/v2/${AWSProcess.version}/bin/aws`)
   },
-  execSync: (command: string): string => {
-    return ChildProcess.execSync(`${CLI_STORAGE}/aws-cli/v2/${AWSProcess.version}/bin/aws ${command}`).toString()
+  execSync: (command: string, options: ChildProcess.ExecSyncOptionsWithStringEncoding): string => {
+    return ChildProcess.execSync(`${CLI_STORAGE}/aws-cli/v2/${AWSProcess.version}/bin/aws ${command}`, options)
   },
 }
 
