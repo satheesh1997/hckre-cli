@@ -1,6 +1,8 @@
 import {Command} from '@oclif/core'
 import {cli} from 'cli-ux'
+import {existsSync, mkdirpSync} from 'fs-extra'
 
+import {CLI_STORAGE} from '../constants'
 import {Configuration} from '../common/config'
 import IUser from '../interfaces/user.interface'
 import User from '../models/user.model'
@@ -30,9 +32,17 @@ information about you to give the better experience.
     } else {
       cli.info(
         chalk.cyanBright(
-          `\n\nHey ${chalk.bold(chalk.greenBright(user.name))}, \n\nLooks like the cli is already initialized !!\n\n`,
+          `\n\nHey ${chalk.bold(chalk.greenBright(user.name))}, \n\nLooks like the cli is already initialized !!`,
         ),
       )
     }
+
+    if (!existsSync(CLI_STORAGE)) {
+      cli.action.start('\nCreating storage')
+      mkdirpSync(CLI_STORAGE)
+      cli.action.stop('OK')
+    }
+
+    cli.info('')
   }
 }
