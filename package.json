@@ -1,6 +1,6 @@
 {
   "name": "hckre",
-  "description": "HackerEarth CLI 2.0 (Engineering & Support)",
+  "description": "HackerEarth CLI (2022)",
   "version": "2.2.2",
   "author": "Satheesh Kumar <mail@satheesh.dev>",
   "bin": {
@@ -78,6 +78,9 @@
     "topics": {
       "aws": {
         "description": "AWS command line utils"
+      },
+      "app": {
+        "description": "Build, test, launch & deploy applications"
       }
     }
   },
