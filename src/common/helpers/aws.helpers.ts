@@ -146,14 +146,23 @@ const getRunningSSMConnectedEC2Instances = async (profile: string): Promise<{nam
     for (const rData of reservation) {
       for (const instance of rData.Instances) {
         let name = ''
+        let user = ''
         for (const tag of instance.Tags) {
           // eslint-disable-next-line max-depth
           if (tag.Key === 'Name') {
             name = tag.Value
           }
+
+          // eslint-disable-next-line max-depth
+          if (tag.Key === 'StagingUser') {
+            user = tag.Value
+          }
         }
 
-        responses.push({value: instance.InstanceId, name: `${name || 'Unknown'}  (${instance.InstanceId})`})
+        if (name && user)
+          responses.push({value: instance.InstanceId, name: `(${instance.InstanceId}) - ${name} - ${user}`})
+        else if (name) responses.push({value: instance.InstanceId, name: `[${instance.InstanceId}] - ${name}`})
+        else responses.push({value: instance.InstanceId, name: `${instance.InstanceId}`})
       }
     }
   }

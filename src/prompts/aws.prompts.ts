@@ -14,12 +14,14 @@ const selectAWSProfile = async (config: IAWSConfiguration): Promise<any> => {
 }
 
 const selectAWSInstance = async (availableInstances: {name: string; value: string}[]): Promise<any> => {
+  // eslint-disable-next-line unicorn/prefer-module
+  Inquirer.registerPrompt('search-list', require('inquirer-search-list'))
   return Inquirer.prompt([
     {
       pageSize: 20,
       name: 'instance',
       message: 'Select an AWS instance',
-      type: 'list',
+      type: 'search-list',
       choices: availableInstances,
     },
   ])
