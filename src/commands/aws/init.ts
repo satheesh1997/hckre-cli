@@ -21,29 +21,24 @@ export class Initialize extends Command {
           task: (_ctx, task) => task.newListr(installAWSSSMPlugin),
         },
         {
-          title: 'Credentials File',
-          skip: () => existsSync(AWS_CREDENTIALS_STORAGE) && existsSync(AWS_CREDENTIALS_STORAGE + '/credentials'),
+          title: 'Files Storage',
+          skip: () => existsSync(AWS_CREDENTIALS_STORAGE),
           task: () => {
-            if (!existsSync(AWS_CREDENTIALS_STORAGE)) {
-              mkdirpSync(AWS_CREDENTIALS_STORAGE)
-            }
-
-            if (!existsSync(AWS_CREDENTIALS_STORAGE + '/credentials')) {
-              writeFileSync(AWS_CREDENTIALS_STORAGE + '/credentials', '')
-            }
+            mkdirpSync(AWS_CREDENTIALS_STORAGE)
+          },
+        },
+        {
+          title: 'Credentials File',
+          skip: () => existsSync(AWS_CREDENTIALS_STORAGE + '/credentials'),
+          task: () => {
+            writeFileSync(AWS_CREDENTIALS_STORAGE + '/credentials', '')
           },
         },
         {
           title: 'Configuration File',
-          skip: () => existsSync(AWS_CREDENTIALS_STORAGE) && existsSync(AWS_CREDENTIALS_STORAGE + '/config'),
+          skip: () => existsSync(AWS_CREDENTIALS_STORAGE + '/config'),
           task: () => {
-            if (!existsSync(AWS_CREDENTIALS_STORAGE)) {
-              mkdirpSync(AWS_CREDENTIALS_STORAGE)
-            }
-
-            if (!existsSync(AWS_CREDENTIALS_STORAGE + '/config')) {
-              writeFileSync(AWS_CREDENTIALS_STORAGE + '/config', DEFAULT_AWS_CONFIG)
-            }
+            writeFileSync(AWS_CREDENTIALS_STORAGE + '/config', DEFAULT_AWS_CONFIG)
           },
         },
       ],

@@ -20,8 +20,14 @@ export class Initialize extends Command {
     }
 
     if (!existsSync(this.config.configDir)) {
-      cli.action.start('Creating config storage')
+      cli.action.start('Creating config')
       mkdirpSync(this.config.configDir)
+      cli.action.stop('OK')
+    }
+
+    if (!existsSync(this.config.cacheDir)) {
+      cli.action.start('Creating cache')
+      mkdirpSync(this.config.cacheDir)
       cli.action.stop('OK')
     }
 
@@ -44,7 +50,7 @@ information about you to give the better experience.
     } else {
       cli.info(
         chalk.cyanBright(
-          `\n\nHey ${chalk.bold(chalk.greenBright(user.name))}, \n\nLooks like the cli is already initialized !!`,
+          `\nHey ${chalk.bold(chalk.greenBright(user.name))}, \n\nLooks like the cli is already initialized !!`,
         ),
       )
     }
