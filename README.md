@@ -1,12 +1,12 @@
 # hckre-cli
 
-HackerEarth CLI 2.0 (Engineering & Support)
+HackerEarth CLI (2022)
 
-[![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg)](https://oclif.io)
-[![Version](https://img.shields.io/npm/v/oclif-hello-world.svg)](https://npmjs.org/package/oclif-hello-world)
-[![CircleCI](https://circleci.com/gh/oclif/hello-world/tree/main.svg?style=shield)](https://circleci.com/gh/oclif/hello-world/tree/main)
-[![Downloads/week](https://img.shields.io/npm/dw/oclif-hello-world.svg)](https://npmjs.org/package/oclif-hello-world)
-[![License](https://img.shields.io/npm/l/oclif-hello-world.svg)](https://github.com/oclif/hello-world/blob/main/package.json)
+[![Lint](https://github.com/satheesh1997/hckre-cli/actions/workflows/lint.yml/badge.svg)](https://github.com/satheesh1997/hckre-cli/actions/workflows/lint.yml)
+[![Format](https://github.com/satheesh1997/hckre-cli/actions/workflows/format.yml/badge.svg)](https://github.com/satheesh1997/hckre-cli/actions/workflows/format.yml)
+[![Version](https://img.shields.io/npm/v/hckre.svg)](https://npmjs.org/package/hckre)
+[![Downloads/week](https://img.shields.io/npm/dw/hckre.svg)](https://npmjs.org/package/hckre)
+[![License](https://img.shields.io/npm/l/hckre.svg)](https://github.com/satheesh1997/hckre/blob/main/package.json)
 
 <!-- toc -->
 * [hckre-cli](#hckre-cli)
