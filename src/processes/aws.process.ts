@@ -10,7 +10,7 @@ const AWSProcess = {
   isLoaded: (): boolean => {
     switch (process.platform) {
       case 'linux':
-        return existsSync(`${CLI_STORAGE}/aws-cli/v2/${AWSProcess.version}/bin/aws`)
+        return existsSync(`${CLI_STORAGE}/aws-cli/v2/bin/aws`)
       case 'darwin':
         if (existsSync(`${CLI_STORAGE}/aws-cli/aws`)) {
           const version = childProcess.execSync(`${CLI_STORAGE}/aws-cli/aws --version`).toString()
@@ -26,7 +26,7 @@ const AWSProcess = {
   execSync: (command: string, options: childProcess.ExecSyncOptionsWithStringEncoding): string => {
     switch (process.platform) {
       case 'linux':
-        return childProcess.execSync(`${CLI_STORAGE}/aws-cli/v2/${AWSProcess.version}/bin/aws ${command}`, options)
+        return childProcess.execSync(`${CLI_STORAGE}/aws-cli/v2/bin/aws ${command}`, options)
       case 'darwin':
         return childProcess.execSync(`${CLI_STORAGE}/aws-cli/aws  ${command}`, options)
       default:

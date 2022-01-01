@@ -90,6 +90,13 @@ const installAWSSSMPlugin: ListrTask[] = [
           stdio: 'ignore',
         },
       )
+      childProcess.execSync(
+        'chmod +x session-manager-plugin',
+        {
+          cwd: CLI_STORAGE,
+          stdio: 'ignore',
+        },
+      )
     },
   },
   {
