@@ -6,10 +6,14 @@ import {ListrTask} from 'listr2'
 import {CLI_STORAGE, DARWIN_INSTALLER_CHOICES_DATA} from '../constants'
 import AWSProcess from '../processes/aws.process'
 
+interface AWSTaskCtx {
+  foundExistingInstallation: boolean
+}
+
 const installAWSCommandLine: ListrTask[] = [
   {
     title: 'Check',
-    task: (ctx): void => {
+    task: (ctx: AWSTaskCtx): void => {
       ctx.foundExistingInstallation = AWSProcess.isLoaded()
     },
   },
@@ -90,7 +94,7 @@ const installAWSCommandLine: ListrTask[] = [
 const installAWSSSMPlugin: ListrTask[] = [
   {
     title: 'Check',
-    task: (ctx): void => {
+    task: (ctx: AWSTaskCtx): void => {
       ctx.foundExistingInstallation = existsSync(`${CLI_STORAGE}/session-manager-plugin`)
     },
   },
