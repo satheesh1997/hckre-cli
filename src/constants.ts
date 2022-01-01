@@ -1,4 +1,4 @@
-import os = require('os')
+import os from 'os'
 
 export const CLI_STORAGE: string = os.homedir + '/.hckre'
 export const AWS_CREDENTIALS_STORAGE: string = os.homedir + '/.aws'

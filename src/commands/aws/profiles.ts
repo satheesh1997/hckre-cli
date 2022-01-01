@@ -1,12 +1,12 @@
+import chalk from 'chalk'
+
 import {Flags} from '@oclif/core'
 import {cli} from 'cli-ux'
 
-import {AWSCommonCommand} from '../../common/commands/aws.command'
-import {printAddMoreAWSProfile, printLoginToAWSProfile} from '../../messages/info.messages'
-
 import AWSProcess from '../../processes/aws.process'
 
-import Chalk = require('chalk')
+import {AWSCommonCommand} from '../../common/commands/aws.command'
+import {printAddMoreAWSProfile, printLoginToAWSProfile} from '../../messages/info.messages'
 
 export class AWSProfileManagerCommand extends AWSCommonCommand {
   static description = 'Manage aws profiles'
@@ -24,7 +24,7 @@ export class AWSProfileManagerCommand extends AWSCommonCommand {
         encoding: 'ascii',
       })
     } else {
-      cli.info(Chalk.greenBright(Chalk.bold('AWS profiles:\n')))
+      cli.info(chalk.greenBright(chalk.bold('AWS profiles:\n')))
       for (const index in this.awsConfiguration.profiles) {
         if (index) cli.info(`${index}. ${this.awsConfiguration.profiles[index]}`)
       }

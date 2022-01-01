@@ -1,13 +1,14 @@
+import chalk from 'chalk'
+
 import {Command} from '@oclif/core'
 import {cli} from 'cli-ux'
 import {existsSync, mkdirpSync} from 'fs-extra'
 
-import {CLI_STORAGE} from '../constants'
-import {Configuration} from '../common/config'
 import IUser from '../interfaces/user.interface'
 import User from '../models/user.model'
 
-import chalk = require('chalk')
+import {CLI_STORAGE} from '../constants'
+import {Configuration} from '../common/config'
 
 export class Initialize extends Command {
   static description = 'Initialize CLI tool'

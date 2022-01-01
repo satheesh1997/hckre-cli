@@ -1,9 +1,9 @@
-import Inquirer = require('inquirer')
+import inquirer from 'inquirer'
 
 import IAWSConfiguration from '../interfaces/aws.config.interface'
 
 const selectAWSProfile = async (config: IAWSConfiguration): Promise<any> => {
-  return Inquirer.prompt([
+  return inquirer.prompt([
     {
       name: 'profile',
       message: 'Select an AWS profile',
@@ -15,8 +15,8 @@ const selectAWSProfile = async (config: IAWSConfiguration): Promise<any> => {
 
 const selectAWSInstance = async (availableInstances: {name: string; value: string}[]): Promise<any> => {
   // eslint-disable-next-line unicorn/prefer-module
-  Inquirer.registerPrompt('search-list', require('inquirer-search-list'))
-  return Inquirer.prompt([
+  inquirer.registerPrompt('search-list', require('inquirer-search-list'))
+  return inquirer.prompt([
     {
       pageSize: 20,
       name: 'instance',

@@ -1,16 +1,16 @@
-import {cli} from 'cli-ux'
+import chalk from 'chalk'
 
-import Chalk = require('chalk')
+import {cli} from 'cli-ux'
 
 const printAddMoreAWSProfile = (): void => {
   cli.info(
-    `${Chalk.greenBright(Chalk.bold('➜'))} Use ${Chalk.yellowBright('hckre aws:profiles --add')} to add more profile.`,
+    `${chalk.greenBright(chalk.bold('➜'))} Use ${chalk.yellowBright('hckre aws:profiles --add')} to add more profile.`,
   )
 }
 
 const printLoginToAWSProfile = (): void => {
   cli.info(
-    `${Chalk.greenBright(Chalk.bold('➜'))} Use ${Chalk.yellowBright('hckre aws:login')} to login with a profile.`,
+    `${chalk.greenBright(chalk.bold('➜'))} Use ${chalk.yellowBright('hckre aws:login')} to login with a profile.`,
   )
 }
 

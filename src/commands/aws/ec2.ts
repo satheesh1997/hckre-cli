@@ -1,6 +1,10 @@
+import chalk from 'chalk'
+
 import {cli} from 'cli-ux'
 import {SSM} from 'aws-sdk'
 import {CredentialsProviderError} from '@aws-sdk/property-provider'
+
+import SSMProcess from '../../processes/ssm.process'
 
 import {panicSSOLoginExpired} from '../../messages/error.messages'
 import {
@@ -11,10 +15,6 @@ import {
 } from '../../common/helpers/aws.helpers'
 import {selectAWSInstance, selectAWSProfile} from '../../prompts/aws.prompts'
 import {AWSCommonCommand} from '../../common/commands/aws.command'
-
-import SSMProcess from '../../processes/ssm.process'
-
-import Chalk = require('chalk')
 
 const compareObjects = (object1: any, object2: any, key: any) => {
   const obj1 = object1[key]
@@ -38,14 +38,14 @@ export class EC2InstanceConnect extends AWSCommonCommand {
     try {
       const {profile} = await selectAWSProfile(this.awsConfiguration)
 
-      cli.action.start(`${Chalk.green('?')} ${Chalk.bold(`Fetching EC2 instances running in ${getRegion(profile)}`)}`)
+      cli.action.start(`${chalk.green('?')} ${chalk.bold(`Fetching EC2 instances running in ${getRegion(profile)}`)}`)
       const runningSSMConnectedEC2Instances: {name: string; value: string}[] = await getRunningSSMConnectedEC2Instances(
         profile,
       )
       runningSSMConnectedEC2Instances.sort((first, second) => {
         return compareObjects(first, second, 'name')
       })
-      cli.action.stop(`${Chalk.cyan('done')}`)
+      cli.action.stop(`${chalk.cyan('done')}`)
 
       const {instance} = await selectAWSInstance(runningSSMConnectedEC2Instances)
       const startSessionRequest: SSM.StartSessionRequest = {

@@ -1,9 +1,9 @@
 import {ConfigIniParser} from 'config-ini-parser'
 import {existsSync, readFileSync} from 'fs-extra'
 
-import {AWS_CREDENTIALS_STORAGE} from '../constants'
-
 import IAWSConfiguration from '../interfaces/aws.config.interface'
+
+import {AWS_CREDENTIALS_STORAGE} from '../constants'
 
 export default class AWSConfiguration implements IAWSConfiguration {
   public profiles: string[] = []

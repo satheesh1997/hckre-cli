@@ -1,15 +1,14 @@
 import {fromSSO} from '@aws-sdk/credential-provider-sso'
 import {AWSError, EC2, SSM} from 'aws-sdk'
-
-import IAWSConfiguration from '../../interfaces/aws.config.interface'
-import AWSConfiguration from '../../models/aws.config.model'
-
 import {
   StartSessionRequest,
   StartSessionResponse,
   TerminateSessionRequest,
   TerminateSessionResponse,
 } from 'aws-sdk/clients/ssm'
+
+import IAWSConfiguration from '../../interfaces/aws.config.interface'
+import AWSConfiguration from '../../models/aws.config.model'
 
 import {AWS_SSM_MAX_INSTANCES} from '../../constants'
 

@@ -1,11 +1,11 @@
 import {Command, Config} from '@oclif/core'
 
-import {panicAWSNotLoaded, panicSSMNotLoaded} from '../../messages/error.messages'
-
 import IAWSConfiguration from '../../interfaces/aws.config.interface'
 import AWSConfiguration from '../../models/aws.config.model'
 import AWSProcess from '../../processes/aws.process'
 import SSMProcess from '../../processes/ssm.process'
+
+import {panicAWSNotLoaded, panicSSMNotLoaded} from '../../messages/error.messages'
 
 export abstract class AWSCommonCommand extends Command {
   public awsConfiguration: IAWSConfiguration
