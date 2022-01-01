@@ -39,6 +39,21 @@ const installAWSCommandLine: ListrTask[] = [
     task: (): void => {
       childProcess.execSync('unzip awscliv2.zip', {cwd: CLI_STORAGE})
       childProcess.execSync('./aws/install -i aws-cli -b bin', {cwd: CLI_STORAGE})
+
+      if (
+        !existsSync(`${CLI_STORAGE}/aws-cli/v2/bin/aws`) &&
+        existsSync(`${CLI_STORAGE}/aws-cli/v2/${AWSProcess.version}/bin/aws`)
+      ) {
+        childProcess.execSync(`mkdir ${CLI_STORAGE}/aws-cli/v2/bin`, {
+          cwd: CLI_STORAGE,
+        })
+        childProcess.execSync(
+          `ln -sf ${CLI_STORAGE}/aws-cli/v2/${AWSProcess.version}/bin/aws ${CLI_STORAGE}/aws-cli/v2/bin/aws`,
+          {
+            cwd: CLI_STORAGE,
+          },
+        )
+      }
     },
   },
   {
@@ -90,13 +105,10 @@ const installAWSSSMPlugin: ListrTask[] = [
           stdio: 'ignore',
         },
       )
-      childProcess.execSync(
-        'chmod +x session-manager-plugin',
-        {
-          cwd: CLI_STORAGE,
-          stdio: 'ignore',
-        },
-      )
+      childProcess.execSync('chmod +x session-manager-plugin', {
+        cwd: CLI_STORAGE,
+        stdio: 'ignore',
+      })
     },
   },
   {
