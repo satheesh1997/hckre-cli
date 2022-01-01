@@ -21,7 +21,7 @@ const printUnsupportedPlatformError = (): void => {
 const panicAWSNotLoaded = (command: Command | undefined): void => {
   cli.info('')
   cli.info(chalk.redBright(chalk.bold('Oops!!')))
-  cli.info(chalk.yellow(`\nCommand aws is not initialized. Run ${chalk.redBright('hckre aws:init')} to initialize!!`))
+  cli.info(chalk.yellow(`\nAWS cli is not loaded. Run ${chalk.redBright('hckre aws:init')} to initialize!!`))
   cli.info('')
   if (command) command.exit(1)
   throw new Error('AWS CLI not configured')
@@ -30,7 +30,7 @@ const panicAWSNotLoaded = (command: Command | undefined): void => {
 const panicSSMNotLoaded = (command: Command | undefined): void => {
   cli.info('')
   cli.info(chalk.redBright(chalk.bold('Oops!!')))
-  cli.info(chalk.yellow(`\nCommand aws is not initialized. Run ${chalk.redBright('hckre aws:init')} to initialize!!`))
+  cli.info(chalk.yellow(`\nSSM plugin is not loaded. Run ${chalk.redBright('hckre aws:init')} to initialize!!`))
   cli.info('')
   if (command) command.exit(1)
   throw new Error('SSM plugin not configured!!')
