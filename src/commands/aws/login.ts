@@ -1,12 +1,11 @@
-import {Command} from '@oclif/core'
-
 import AWSProcess from '../../processes/aws.process'
 import AWSConfiguration from '../../models/aws.config.model'
 import IAWSConfiguration from '../../interfaces/aws.config.interface'
 
 import {selectAWSProfile} from '../../prompts/aws.prompts'
+import {AWSCommonCommand} from '../../common/commands/aws.command'
 
-export class Login extends Command {
+export class Login extends AWSCommonCommand {
   static description = 'Login via SSO'
 
   async run(): Promise<void> {

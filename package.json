@@ -9,6 +9,7 @@
   "bugs": "https://github.com/HackerEarth/hckre-cli/issues",
   "dependencies": {
     "@aws-sdk/credential-provider-sso": "^3.45.0",
+    "@aws-sdk/property-provider": "^3.40.0",
     "@oclif/core": "^1",
     "@oclif/plugin-autocomplete": "^1.0.0",
     "@oclif/plugin-commands": "^2.0.1",
