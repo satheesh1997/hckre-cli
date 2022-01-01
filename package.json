@@ -2,11 +2,11 @@
   "name": "hckre",
   "description": "HackerEarth CLI 2.0 (Engineering & Support)",
   "version": "2.2.2",
-  "author": "HackerEarth <engineering@hackerearth.com>",
+  "author": "Satheesh Kumar <mail@satheesh.dev>",
   "bin": {
     "hckre": "./bin/run"
   },
-  "bugs": "https://github.com/HackerEarth/hckre-cli/issues",
+  "bugs": "https://github.com/satheesh1997/hckre-cli/issues",
   "dependencies": {
     "@aws-sdk/credential-provider-sso": "^3.45.0",
     "@aws-sdk/property-provider": "^3.40.0",
@@ -56,7 +56,7 @@
     "/npm-shrinkwrap.json",
     "/oclif.manifest.json"
   ],
-  "homepage": "https://github.com/HackerEarth/hckre-cli",
+  "homepage": "https://github.com/satheesh1997/hckre-cli",
   "keywords": [
     "oclif"
   ],
