@@ -45,4 +45,18 @@ const panicSSOLoginExpired = (command: Command | undefined): void => {
   throw new Error('SSM plugin not configured!!')
 }
 
-export {printCommandError, printUnsupportedPlatformError, panicAWSNotLoaded, panicSSMNotLoaded, panicSSOLoginExpired}
+const printAppAlreadyInitialized = (): void => {
+  cli.info('')
+  cli.info(chalk.yellowBright(chalk.bold('This app is already initialized!!')))
+  cli.info(chalk.cyanBright('\nYou need to manually edit the configuration file.'))
+  cli.info('')
+}
+
+export {
+  printCommandError,
+  printUnsupportedPlatformError,
+  panicAWSNotLoaded,
+  panicSSMNotLoaded,
+  panicSSOLoginExpired,
+  printAppAlreadyInitialized,
+}

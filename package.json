@@ -80,7 +80,7 @@
         "description": "AWS command line utils"
       },
       "app": {
-        "description": "Build, test, launch & deploy applications"
+        "description": "Build, test, deploy & start application"
       }
     }
   },
