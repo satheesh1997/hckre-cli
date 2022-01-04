@@ -13,7 +13,7 @@ export class RunCommand extends AppCommonCommand {
   async run(): Promise<void> {
     const availableCommands: {name: string; value: string}[] = []
 
-    if (availableCommands.length === 0) {
+    if (Object.keys(this.appConfiguration.commands).length === 0) {
       cli.info(chalk.bold(chalk.redBright('\nNo command configured to run !!')))
       cli.info(chalk.bold(chalk.cyanBright('\nUsefull Commands:')))
       printAddAppCommand()
