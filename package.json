@@ -49,7 +49,7 @@
   },
   "dirname": "oex",
   "engines": {
-    "node": ">=12.0.0"
+    "node": ">=16.0.0"
   },
   "files": [
     "/bin",
@@ -59,7 +59,10 @@
   ],
   "homepage": "https://github.com/satheesh1997/hckre-cli",
   "keywords": [
-    "oclif"
+    "hckre",
+    "HackerEarth",
+    "HackerEarth Command Line",
+    "HackerEarth CLI"
   ],
   "license": "MIT",
   "main": "dist/index.js",
@@ -97,5 +100,27 @@
     "format": "prettier \"./src/**/*.+(js|jsx|css|less|scss|ts|tsx|md)\" --check",
     "format:fix": "prettier \"./src/**/*.+(js|jsx|css|less|scss|ts|tsx|md)\" --write"
   },
-  "types": "dist/index.d.ts"
+  "types": "dist/index.d.ts",
+  "update": {
+    "s3": {
+      "bucket": "hckre-cli",
+      "host": "https://hckre-cli.s3.ap-south-1.amazonaws.com/",
+      "templates": {
+        "target": {
+          "unversioned": "<%- 'channels/' + channel + '/' %><%- bin %>-<%- platform %>-<%- arch %><%- ext %>",
+          "versioned": "<%- 'channels/' + channel + '/' %><%- version %>/<%- bin %>-<%- platform %>-<%- arch %><%- ext %>",
+          "manifest": "<%- 'channels/' + channel + '/' %><%- platform %>-<%- arch %>"
+        },
+        "vanilla": {
+          "unversioned": "<%- 'channels/' + channel + '/' %><%- bin %>-<%- platform %>-<%- arch %><%- ext %>",
+          "versioned": "<%- 'channels/' + channel + '/' %><%- version %>/<%- bin %>-<%- platform %>-<%- arch %><%- ext %>",
+          "manifest": "<%- 'channels/' + channel + '/' %><%- platform %>-<%- arch %>"
+        }
+      }
+    }
+  },
+  "warn-if-update-available": {
+    "timeoutInDays": 1,
+    "message": "<%= config.name %> update available from <%= chalk.greenBright(config.version) %> to <%= chalk.greenBright(latest) %>."
+  }
 }
