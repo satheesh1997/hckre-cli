@@ -10,7 +10,7 @@ import {panicAppNotInitialized} from '../../messages/error.messages'
 import {addNewAppCommand} from '../../prompts/app.prompts'
 import {printAddAppCommand} from '../../messages/info.messages'
 
-export class AddListCommands extends Command {
+export class AddListAppCommands extends Command {
   static description = 'List & add commands'
 
   static flags = {
@@ -22,7 +22,7 @@ export class AddListCommands extends Command {
       panicAppNotInitialized(this)
     }
 
-    const {flags} = await this.parse(AddListCommands)
+    const {flags} = await this.parse(AddListAppCommands)
     const appConfiguration = new AppConfiguration()
 
     if (flags.add) {
