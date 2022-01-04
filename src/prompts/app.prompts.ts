@@ -27,4 +27,15 @@ const addNewAppCommand = async (): Promise<any> => {
   ])
 }
 
-export {addNewAppCommand}
+const selectCommandToRun = async (choices: {name: string; value: string}[]): Promise<any> => {
+  return inquirer.prompt([
+    {
+      name: 'command',
+      message: 'Select a command',
+      type: 'list',
+      choices: choices,
+    },
+  ])
+}
+
+export {addNewAppCommand, selectCommandToRun}
