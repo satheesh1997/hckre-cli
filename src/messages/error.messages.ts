@@ -52,6 +52,15 @@ const printAppAlreadyInitialized = (): void => {
   cli.info('')
 }
 
+const panicAppNotInitialized = (command: Command | undefined): void => {
+  cli.info('')
+  cli.info(chalk.redBright(chalk.bold('Oops!!')))
+  cli.info(chalk.yellow(`\nApp is not initialized. Run ${chalk.redBright('hckre app:init')} to init this app!!`))
+  cli.info('')
+  if (command) command.exit(1)
+  throw new Error('App is not initialized!!')
+}
+
 export {
   printCommandError,
   printUnsupportedPlatformError,
@@ -59,4 +68,5 @@ export {
   panicSSMNotLoaded,
   panicSSOLoginExpired,
   printAppAlreadyInitialized,
+  panicAppNotInitialized,
 }
