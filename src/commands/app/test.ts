@@ -1,37 +1,27 @@
 import chalk from 'chalk'
 
-import {Command} from '@oclif/core'
 import {cli} from 'cli-ux'
-import {existsSync} from 'fs-extra'
 
-import AppConfiguration from '../../models/app.config.model'
-
-import {panicAppNotInitialized} from '../../messages/error.messages'
-import {IAppConfiguration} from '../../interfaces/app.config.interface'
 import {Process} from '../../processes/process'
 import {printAddAppCommand} from '../../messages/info.messages'
+import {AppCommonCommand} from '../../common/commands/app.command'
 
-export class TestAppCommand extends Command {
+export class TestAppCommand extends AppCommonCommand {
   static description = 'Test the application'
 
   async run(): Promise<void> {
-    if (!existsSync('hckre.json')) {
-      panicAppNotInitialized(this)
-    }
-
-    const appConfiguration: IAppConfiguration = new AppConfiguration()
     const commands = []
     const environment = process.env.MACHINE_TYPE || 'local'
 
     switch (environment) {
       case 'local':
-        commands.push(...appConfiguration.environmentCommands.local.test)
+        commands.push(...this.appConfiguration.environmentCommands.local.test)
         break
       case 'production':
-        commands.push(...appConfiguration.environmentCommands.production.test)
+        commands.push(...this.appConfiguration.environmentCommands.production.test)
         break
       case 'staging':
-        commands.push(...appConfiguration.environmentCommands.staging.test)
+        commands.push(...this.appConfiguration.environmentCommands.staging.test)
         break
       default:
         throw new Error('Unsupported environment')

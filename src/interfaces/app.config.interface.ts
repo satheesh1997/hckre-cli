@@ -14,4 +14,6 @@ export interface IAppConfiguration {
     staging: IAppConfigurationCommand
   }
   commands: {[key: string]: [value: string]}
+
+  save(): void
 }
