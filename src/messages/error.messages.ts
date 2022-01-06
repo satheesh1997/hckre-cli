@@ -4,6 +4,12 @@ import {cli} from 'cli-ux'
 
 import {Command} from '@oclif/core'
 
+const printCLINotInitialized = (): void => {
+  cli.info('')
+  cli.info(chalk.yellow(`Might not work properly. Run ${chalk.redBright('hckre init')} to initialize!!`))
+  cli.info('')
+}
+
 const printCommandError = (): void => {
   cli.info('')
   cli.info(chalk.redBright(chalk.bold('Oops!!')))
@@ -62,6 +68,7 @@ const panicAppNotInitialized = (command: Command | undefined): void => {
 }
 
 export {
+  printCLINotInitialized,
   printCommandError,
   printUnsupportedPlatformError,
   panicAWSNotLoaded,

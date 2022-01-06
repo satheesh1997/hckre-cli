@@ -69,6 +69,9 @@
   "oclif": {
     "bin": "hckre",
     "commands": "./dist/commands",
+    "hooks": {
+      "init": "./dist/hooks/init/check"
+    },
     "plugins": [
       "@oclif/plugin-autocomplete",
       "@oclif/plugin-commands",
