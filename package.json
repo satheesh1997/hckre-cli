@@ -1,7 +1,7 @@
 {
   "name": "hckre",
   "description": "HackerEarth CLI (2022)",
-  "version": "2.2.2",
+  "version": "2.2.3",
   "author": "Satheesh Kumar <mail@satheesh.dev>",
   "bin": {
     "hckre": "./bin/run"
@@ -40,7 +40,7 @@
     "eslint-config-oclif-typescript": "^1.0.2",
     "globby": "^11",
     "mocha": "^9",
-    "oclif": "^2.1.0",
+    "oclif": "^2.0.1",
     "prettier": "^2.5.1",
     "shx": "^0.3.3",
     "ts-node": "^10.2.1",
@@ -85,6 +85,28 @@
       "app": {
         "description": "Build, test, deploy & start application"
       }
+    },
+    "update": {
+      "s3": {
+        "bucket": "hckre-cli",
+        "host": "https://hckre-cli.s3.ap-south-1.amazonaws.com/",
+        "templates": {
+          "target": {
+            "unversioned": "<%- 'channels/' + channel + '/' %><%- bin %>-<%- platform %>-<%- arch %><%- ext %>",
+            "versioned": "<%- 'channels/' + channel + '/' %><%- version %>/<%- bin %>-<%- platform %>-<%- arch %><%- ext %>",
+            "manifest": "<%- 'channels/' + channel + '/' %><%- platform %>-<%- arch %>"
+          },
+          "vanilla": {
+            "unversioned": "<%- 'channels/' + channel + '/' %><%- bin %>-<%- platform %>-<%- arch %><%- ext %>",
+            "versioned": "<%- 'channels/' + channel + '/' %><%- version %>/<%- bin %>-<%- platform %>-<%- arch %><%- ext %>",
+            "manifest": "<%- 'channels/' + channel + '/' %><%- platform %>-<%- arch %>"
+          }
+        }
+      }
+    },
+    "warn-if-update-available": {
+      "timeoutInDays": 1,
+      "message": "<%= config.name %> update available from <%= chalk.greenBright(config.version) %> to <%= chalk.greenBright(latest) %>."
     }
   },
   "repository": "satheesh1997/hckre-cli",
@@ -100,27 +122,5 @@
     "format": "prettier \"./src/**/*.+(js|jsx|css|less|scss|ts|tsx|md)\" --check",
     "format:fix": "prettier \"./src/**/*.+(js|jsx|css|less|scss|ts|tsx|md)\" --write"
   },
-  "types": "dist/index.d.ts",
-  "update": {
-    "s3": {
-      "bucket": "hckre-cli",
-      "host": "https://hckre-cli.s3.ap-south-1.amazonaws.com/",
-      "templates": {
-        "target": {
-          "unversioned": "<%- 'channels/' + channel + '/' %><%- bin %>-<%- platform %>-<%- arch %><%- ext %>",
-          "versioned": "<%- 'channels/' + channel + '/' %><%- version %>/<%- bin %>-<%- platform %>-<%- arch %><%- ext %>",
-          "manifest": "<%- 'channels/' + channel + '/' %><%- platform %>-<%- arch %>"
-        },
-        "vanilla": {
-          "unversioned": "<%- 'channels/' + channel + '/' %><%- bin %>-<%- platform %>-<%- arch %><%- ext %>",
-          "versioned": "<%- 'channels/' + channel + '/' %><%- version %>/<%- bin %>-<%- platform %>-<%- arch %><%- ext %>",
-          "manifest": "<%- 'channels/' + channel + '/' %><%- platform %>-<%- arch %>"
-        }
-      }
-    }
-  },
-  "warn-if-update-available": {
-    "timeoutInDays": 1,
-    "message": "<%= config.name %> update available from <%= chalk.greenBright(config.version) %> to <%= chalk.greenBright(latest) %>."
-  }
+  "types": "dist/index.d.ts"
 }
