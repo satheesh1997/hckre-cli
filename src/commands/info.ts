@@ -16,10 +16,12 @@ ${chalk.bold(chalk.yellow('Dependencies'))}:
         1. sudo apt install git
         2. refer to install docker - https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-18-04
         3. sudo apt-get install docker-compose
+        3. sudo apt-get install unzip
     ${chalk.bold(chalk.blue('Arch'))}
         1. sudo pacman -S git
         2. refer to install docker - https://linuxconfig.org/manjaro-linux-docker-installation
         3. sudo pacman -S docker-compose
+        3. sudo pacman -S unzip
     ${chalk.bold(chalk.blue('darwin'))}
         1. refer to install brew - https://www.digitalocean.com/community/tutorials/how-to-install-and-use-homebrew-on-macos
         2. refer to install docker - https://docs.docker.com/desktop/mac/install/
