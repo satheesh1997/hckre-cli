@@ -1,7 +1,7 @@
 {
   "name": "hckre",
   "description": "HackerEarth CLI (2022)",
-  "version": "2.2.3",
+  "version": "2.3.0",
   "author": "Satheesh Kumar <mail@satheesh.dev>",
   "bin": {
     "hckre": "./bin/run"
