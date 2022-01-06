@@ -7,26 +7,37 @@
 [![License](https://img.shields.io/npm/l/hckre.svg)](https://github.com/satheesh1997/hckre/blob/main/package.json)
 
 <!-- toc -->
-* [hckre-cli](#hckre-cli)
-* [Usage](#usage)
+* [Install](#install)
 * [Commands](#commands)
 <!-- tocstop -->
 
-# Usage
+# Install
 
-<!-- usage -->
+<!-- installation -->
+
 ```sh-session
-$ npm install -g hckre
-$ hckre COMMAND
+$ curl https://hckre-cli.s3.ap-south-1.amazonaws.com/install.sh | bash
+$ hckre init
 running command...
-$ hckre (--version)
-hckre/2.3.0 darwin-arm64 node-v16.13.1
 $ hckre --help [COMMAND]
 USAGE
   $ hckre COMMAND
 ...
 ```
-<!-- usagestop -->
+
+### NPM
+
+```sh-session
+$ npm install -g hckre
+$ hckre init
+running command...
+$ hckre --help [COMMAND]
+USAGE
+  $ hckre COMMAND
+...
+```
+
+<!-- installationstop -->
 
 # Commands
 
