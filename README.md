@@ -1,7 +1,5 @@
 # hckre-cli
 
-HackerEarth CLI (2022)
-
 [![Lint](https://github.com/satheesh1997/hckre-cli/actions/workflows/lint.yml/badge.svg)](https://github.com/satheesh1997/hckre-cli/actions/workflows/lint.yml)
 [![Format](https://github.com/satheesh1997/hckre-cli/actions/workflows/format.yml/badge.svg)](https://github.com/satheesh1997/hckre-cli/actions/workflows/format.yml)
 [![Version](https://img.shields.io/npm/v/hckre.svg)](https://npmjs.org/package/hckre)
