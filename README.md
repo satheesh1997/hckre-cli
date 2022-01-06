@@ -22,7 +22,7 @@ $ npm install -g hckre
 $ hckre COMMAND
 running command...
 $ hckre (--version)
-hckre/2.2.2 darwin-arm64 node-v16.13.1
+hckre/2.2.2 linux-x64 node-v16.13.1
 $ hckre --help [COMMAND]
 USAGE
   $ hckre COMMAND
