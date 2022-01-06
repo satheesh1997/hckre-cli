@@ -9,7 +9,7 @@ export default class Info extends Command {
   async run(): Promise<void> {
     const message = `
 ${chalk.greenBright('Hckre')} is a command-line interface that is built to help developers ease their daily work.
-${chalk.bold(chalk.yellow('\n\nVersion'))}: 
+${chalk.bold(chalk.yellow('\nVersion'))}:
     ${this.config.version}
 ${chalk.bold(chalk.yellow('Dependencies'))}:
     ${chalk.bold(chalk.blue('Ubuntu'))}

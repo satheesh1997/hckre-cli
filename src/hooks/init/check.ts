@@ -5,11 +5,7 @@ import {CLI_STORAGE} from '../../constants'
 import {printCLINotInitialized} from '../../messages/error.messages'
 
 const hook: Hook<'init'> = async function (options) {
-  if ((options.id && options.id.includes('aws:')) || (options.id && options.id === 'aws')) {
-    return
-  }
-
-  if (options.id && options.id === 'init') {
+  if ((options.id && options.id === 'init') || (options.id && options.id === 'info')) {
     return
   }
 
