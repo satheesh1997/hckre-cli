@@ -2,7 +2,11 @@ import inquirer from 'inquirer'
 
 import IAWSConfiguration from '../interfaces/aws.config.interface'
 
-const selectAWSProfile = async (config: IAWSConfiguration): Promise<any> => {
+const selectAWSProfile = async (
+  config: IAWSConfiguration,
+): Promise<{
+  profile: string
+}> => {
   return inquirer.prompt([
     {
       name: 'profile',
@@ -13,7 +17,11 @@ const selectAWSProfile = async (config: IAWSConfiguration): Promise<any> => {
   ])
 }
 
-const selectAWSInstance = async (availableInstances: {name: string; value: string}[]): Promise<any> => {
+const selectAWSInstance = async (
+  availableInstances: {name: string; value: string}[],
+): Promise<{
+  instance: string
+}> => {
   // eslint-disable-next-line unicorn/prefer-module
   inquirer.registerPrompt('search-list', require('inquirer-search-list'))
   return inquirer.prompt([
