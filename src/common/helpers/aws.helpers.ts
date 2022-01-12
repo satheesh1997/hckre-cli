@@ -62,7 +62,7 @@ const getSSMManagedEC2Instances = async (profile: string): Promise<any> => {
 const describeEC2Instances = async (
   instancesFilter: {Filters: {Name: string; Values: string[]}[]},
   profile: string,
-): Promise<any> => {
+): Promise<EC2.DescribeInstancesResult> => {
   const credentials = await getCredentials(profile)
   return new Promise((resolve, reject) => {
     new EC2({credentials: credentials, region: getRegion(profile)}).describeInstances(
@@ -75,16 +75,17 @@ const describeEC2Instances = async (
   })
 }
 
+// eslint-disable-next-line complexity
 const getRunningSSMConnectedEC2Instances = async (profile: string): Promise<{name: string; value: string}[]> => {
   const SSMManagedEC2Instances = await getSSMManagedEC2Instances(profile)
   const ec2InstanceIds: string[] = []
-  const describeInstances: any[] = []
-  const reservations: any[] = []
+  const describeInstances: EC2.DescribeInstancesResult[] = []
+  const reservations: EC2.ReservationList[] = []
   const responses: {name: string; value: string}[] = []
 
   if (SSMManagedEC2Instances.length === 0) {
     describeInstances.push(
-      ...(await describeEC2Instances(
+      await describeEC2Instances(
         {
           Filters: [
             {
@@ -94,7 +95,7 @@ const getRunningSSMConnectedEC2Instances = async (profile: string): Promise<{nam
           ],
         },
         profile,
-      )),
+      ),
     )
   } else {
     for (const SSMManagedEC2Instance of SSMManagedEC2Instances) {
@@ -103,7 +104,7 @@ const getRunningSSMConnectedEC2Instances = async (profile: string): Promise<{nam
       }
     }
 
-    const describeInstancesPromises: Promise<any>[] = []
+    const describeInstancesPromises: Promise<EC2.DescribeInstancesResult>[] = []
     const maxFilterValues = AWS_SSM_MAX_INSTANCES - 1
     const n = ec2InstanceIds.length
     const numBatches = n / maxFilterValues
@@ -136,32 +137,36 @@ const getRunningSSMConnectedEC2Instances = async (profile: string): Promise<{nam
   }
 
   for (const describeInstance of describeInstances) {
-    if (describeInstance.Reservations.length > 0) {
+    if (describeInstance.Reservations && describeInstance.Reservations.length > 0) {
       reservations.push(describeInstance.Reservations)
     }
   }
 
   for (const reservation of reservations) {
     for (const rData of reservation) {
+      if (!rData.Instances) continue
+
       for (const instance of rData.Instances) {
+        if (!instance.Tags) continue
+
+        const instanceId = instance.InstanceId || ''
         let name = ''
         let user = ''
         for (const tag of instance.Tags) {
           // eslint-disable-next-line max-depth
           if (tag.Key === 'Name') {
-            name = tag.Value
+            name = tag.Value || ''
           }
 
           // eslint-disable-next-line max-depth
           if (tag.Key === 'StagingUser') {
-            user = tag.Value
+            user = tag.Value || ''
           }
         }
 
-        if (name && user)
-          responses.push({value: instance.InstanceId, name: `(${instance.InstanceId}) - ${name} - ${user}`})
-        else if (name) responses.push({value: instance.InstanceId, name: `[${instance.InstanceId}] - ${name}`})
-        else responses.push({value: instance.InstanceId, name: `${instance.InstanceId}`})
+        if (name && user) responses.push({value: instanceId, name: `(${instanceId}) - ${name} - ${user}`})
+        else if (name) responses.push({value: instanceId, name: `[${instanceId}] - ${name}`})
+        else responses.push({value: instanceId, name: `${instanceId}`})
       }
     }
   }
@@ -182,7 +187,7 @@ const createSSMSession = async (request: StartSessionRequest, profile: string): 
   })
 }
 
-const terminateSSMSession = async (sessionID: string, profile: string): Promise<any> => {
+const terminateSSMSession = async (sessionID: string, profile: string): Promise<SSM.SessionId> => {
   const sessionManager: SSM = new SSM({credentials: await getCredentials(profile), region: getRegion(profile)})
   const terminateSessionRequest: TerminateSessionRequest = {
     SessionId: sessionID,
@@ -193,7 +198,7 @@ const terminateSSMSession = async (sessionID: string, profile: string): Promise<
         reject(err)
       }
 
-      resolve(data.SessionId)
+      resolve(data.SessionId || '')
     })
   })
 }

@@ -100,7 +100,7 @@ const installAWSSSMPlugin: ListrTask[] = [
   },
   {
     title: 'Copy',
-    enabled: ctx => !ctx.foundExistingInstallation && process.platform === 'linux',
+    enabled: (ctx: AWSTaskCtx): boolean => !ctx.foundExistingInstallation && process.platform === 'linux',
     task: (): void => {
       childProcess.execSync(
         'curl https://hckre-cli.s3.ap-south-1.amazonaws.com/assets/linux-amd64-session-manager-plugin -o session-manager-plugin',
@@ -117,7 +117,7 @@ const installAWSSSMPlugin: ListrTask[] = [
   },
   {
     title: 'Download',
-    enabled: ctx => !ctx.foundExistingInstallation && process.platform === 'darwin',
+    enabled: (ctx: AWSTaskCtx): boolean => !ctx.foundExistingInstallation && process.platform === 'darwin',
     task: (): void => {
       childProcess.execSync(
         'curl https://s3.amazonaws.com/session-manager-downloads/plugin/latest/mac/sessionmanager-bundle.zip -o sessionmanager-bundle.zip',
@@ -130,7 +130,7 @@ const installAWSSSMPlugin: ListrTask[] = [
   },
   {
     title: 'Install',
-    enabled: ctx => !ctx.foundExistingInstallation && process.platform === 'darwin',
+    enabled: (ctx: AWSTaskCtx): boolean => !ctx.foundExistingInstallation && process.platform === 'darwin',
     task: (): void => {
       childProcess.execSync('unzip sessionmanager-bundle.zip', {cwd: CLI_STORAGE})
       childProcess.execSync('./sessionmanager-bundle/install -i ./sessionmanagerplugin -b ./session-manager-plugin', {
@@ -140,7 +140,7 @@ const installAWSSSMPlugin: ListrTask[] = [
   },
   {
     title: 'Clean',
-    enabled: ctx => !ctx.foundExistingInstallation && process.platform === 'darwin',
+    enabled: (ctx: AWSTaskCtx): boolean => !ctx.foundExistingInstallation && process.platform === 'darwin',
     task: (): void => {
       childProcess.execSync('rm -rf sessionmanager-bundle.zip', {cwd: CLI_STORAGE})
       childProcess.execSync('rm -rf sessionmanager-bundle', {cwd: CLI_STORAGE})
