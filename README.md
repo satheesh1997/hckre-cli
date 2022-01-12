@@ -1,7 +1,5 @@
 # hckre-cli
 
-HackerEarth CLI (2022)
-
 [![Lint](https://github.com/satheesh1997/hckre-cli/actions/workflows/lint.yml/badge.svg)](https://github.com/satheesh1997/hckre-cli/actions/workflows/lint.yml)
 [![Format](https://github.com/satheesh1997/hckre-cli/actions/workflows/format.yml/badge.svg)](https://github.com/satheesh1997/hckre-cli/actions/workflows/format.yml)
 [![Version](https://img.shields.io/npm/v/hckre.svg)](https://npmjs.org/package/hckre)
@@ -10,33 +8,159 @@ HackerEarth CLI (2022)
 
 <!-- toc -->
 * [hckre-cli](#hckre-cli)
-* [Usage](#usage)
+* [Install](#install)
 * [Commands](#commands)
 <!-- tocstop -->
 
-# Usage
+# Install
 
-<!-- usage -->
+<!-- installation -->
+
 ```sh-session
-$ npm install -g hckre
-$ hckre COMMAND
+$ curl https://hckre-cli.s3.ap-south-1.amazonaws.com/install.sh | bash
+$ hckre init
 running command...
-$ hckre (--version)
-hckre/2.2.2 darwin-arm64 node-v16.13.1
 $ hckre --help [COMMAND]
 USAGE
   $ hckre COMMAND
 ...
 ```
-<!-- usagestop -->
+
+### NPM
+
+```sh-session
+$ npm install -g hckre
+$ hckre init
+running command...
+$ hckre --help [COMMAND]
+USAGE
+  $ hckre COMMAND
+...
+```
+
+<!-- installationstop -->
 
 # Commands
 
 <!-- commands -->
+* [`hckre app:build`](#hckre-appbuild)
+* [`hckre app:commands`](#hckre-appcommands)
+* [`hckre app:deploy`](#hckre-appdeploy)
+* [`hckre app:init`](#hckre-appinit)
+* [`hckre app:run`](#hckre-apprun)
+* [`hckre app:start`](#hckre-appstart)
+* [`hckre app:test`](#hckre-apptest)
 * [`hckre autocomplete [SHELL]`](#hckre-autocomplete-shell)
+* [`hckre aws:ec2`](#hckre-awsec2)
+* [`hckre aws:init`](#hckre-awsinit)
+* [`hckre aws:login`](#hckre-awslogin)
+* [`hckre aws:profiles`](#hckre-awsprofiles)
 * [`hckre commands`](#hckre-commands)
 * [`hckre help [COMMAND]`](#hckre-help-command)
+* [`hckre info`](#hckre-info)
+* [`hckre init`](#hckre-init)
 * [`hckre update [CHANNEL]`](#hckre-update-channel)
+
+## `hckre app:build`
+
+Build the application
+
+```
+USAGE
+  $ hckre app:build
+
+DESCRIPTION
+  Build the application
+```
+
+_See code: [dist/commands/app/build.ts](https://github.com/satheesh1997/hckre-cli/blob/v3.0.1/dist/commands/app/build.ts)_
+
+## `hckre app:commands`
+
+List & add commands
+
+```
+USAGE
+  $ hckre app:commands [-a]
+
+FLAGS
+  -a, --add  add a new command
+
+DESCRIPTION
+  List & add commands
+```
+
+_See code: [dist/commands/app/commands.ts](https://github.com/satheesh1997/hckre-cli/blob/v3.0.1/dist/commands/app/commands.ts)_
+
+## `hckre app:deploy`
+
+Deploy the application
+
+```
+USAGE
+  $ hckre app:deploy
+
+DESCRIPTION
+  Deploy the application
+```
+
+_See code: [dist/commands/app/deploy.ts](https://github.com/satheesh1997/hckre-cli/blob/v3.0.1/dist/commands/app/deploy.ts)_
+
+## `hckre app:init`
+
+Initialize an application
+
+```
+USAGE
+  $ hckre app:init
+
+DESCRIPTION
+  Initialize an application
+```
+
+_See code: [dist/commands/app/init.ts](https://github.com/satheesh1997/hckre-cli/blob/v3.0.1/dist/commands/app/init.ts)_
+
+## `hckre app:run`
+
+Run a command
+
+```
+USAGE
+  $ hckre app:run
+
+DESCRIPTION
+  Run a command
+```
+
+_See code: [dist/commands/app/run.ts](https://github.com/satheesh1997/hckre-cli/blob/v3.0.1/dist/commands/app/run.ts)_
+
+## `hckre app:start`
+
+Start the application
+
+```
+USAGE
+  $ hckre app:start
+
+DESCRIPTION
+  Start the application
+```
+
+_See code: [dist/commands/app/start.ts](https://github.com/satheesh1997/hckre-cli/blob/v3.0.1/dist/commands/app/start.ts)_
+
+## `hckre app:test`
+
+Test the application
+
+```
+USAGE
+  $ hckre app:test
+
+DESCRIPTION
+  Test the application
+```
+
+_See code: [dist/commands/app/test.ts](https://github.com/satheesh1997/hckre-cli/blob/v3.0.1/dist/commands/app/test.ts)_
 
 ## `hckre autocomplete [SHELL]`
 
@@ -66,6 +190,65 @@ EXAMPLES
 ```
 
 _See code: [@oclif/plugin-autocomplete](https://github.com/oclif/plugin-autocomplete/blob/v1.0.0/src/commands/autocomplete/index.ts)_
+
+## `hckre aws:ec2`
+
+Connect to EC2 instance via SSM
+
+```
+USAGE
+  $ hckre aws:ec2
+
+DESCRIPTION
+  Connect to EC2 instance via SSM
+```
+
+_See code: [dist/commands/aws/ec2.ts](https://github.com/satheesh1997/hckre-cli/blob/v3.0.1/dist/commands/aws/ec2.ts)_
+
+## `hckre aws:init`
+
+Initialize AWS command
+
+```
+USAGE
+  $ hckre aws:init
+
+DESCRIPTION
+  Initialize AWS command
+```
+
+_See code: [dist/commands/aws/init.ts](https://github.com/satheesh1997/hckre-cli/blob/v3.0.1/dist/commands/aws/init.ts)_
+
+## `hckre aws:login`
+
+Login via SSO
+
+```
+USAGE
+  $ hckre aws:login
+
+DESCRIPTION
+  Login via SSO
+```
+
+_See code: [dist/commands/aws/login.ts](https://github.com/satheesh1997/hckre-cli/blob/v3.0.1/dist/commands/aws/login.ts)_
+
+## `hckre aws:profiles`
+
+Manage aws profiles
+
+```
+USAGE
+  $ hckre aws:profiles [-a]
+
+FLAGS
+  -a, --add  add a new profile
+
+DESCRIPTION
+  Manage aws profiles
+```
+
+_See code: [dist/commands/aws/profiles.ts](https://github.com/satheesh1997/hckre-cli/blob/v3.0.1/dist/commands/aws/profiles.ts)_
 
 ## `hckre commands`
 
@@ -115,6 +298,34 @@ DESCRIPTION
 ```
 
 _See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v5.1.9/src/commands/help.ts)_
+
+## `hckre info`
+
+display information about cli
+
+```
+USAGE
+  $ hckre info
+
+DESCRIPTION
+  display information about cli
+```
+
+_See code: [dist/commands/info.ts](https://github.com/satheesh1997/hckre-cli/blob/v3.0.1/dist/commands/info.ts)_
+
+## `hckre init`
+
+Initialize CLI tool
+
+```
+USAGE
+  $ hckre init
+
+DESCRIPTION
+  Initialize CLI tool
+```
+
+_See code: [dist/commands/init.ts](https://github.com/satheesh1997/hckre-cli/blob/v3.0.1/dist/commands/init.ts)_
 
 ## `hckre update [CHANNEL]`
 
