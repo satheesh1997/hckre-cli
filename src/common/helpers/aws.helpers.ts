@@ -45,7 +45,7 @@ const getSSMManagedEC2Instances = async (profile: string): Promise<any> => {
             }
           }
 
-          if (data?.NextToken && readyInstancesList.length < AWS_SSM_MAX_INSTANCES) {
+          if (data?.NextToken) {
             nextToken = data.NextToken
             Promise.resolve().then(loop).catch(reject)
           } else {
