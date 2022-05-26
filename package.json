@@ -1,7 +1,7 @@
 {
   "name": "hckre",
   "description": "HackerEarth CLI",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "author": "Satheesh Kumar <mail@satheesh.dev>",
   "bin": {
     "hckre": "./bin/run"

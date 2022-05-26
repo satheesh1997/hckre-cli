@@ -73,7 +73,7 @@ DESCRIPTION
   Build the application
 ```
 
-_See code: [dist/commands/app/build.ts](https://github.com/satheesh1997/hckre-cli/blob/v3.0.1/dist/commands/app/build.ts)_
+_See code: [dist/commands/app/build.ts](https://github.com/satheesh1997/hckre-cli/blob/v3.0.2/dist/commands/app/build.ts)_
 
 ## `hckre app:commands`
 
@@ -90,7 +90,7 @@ DESCRIPTION
   List & add commands
 ```
 
-_See code: [dist/commands/app/commands.ts](https://github.com/satheesh1997/hckre-cli/blob/v3.0.1/dist/commands/app/commands.ts)_
+_See code: [dist/commands/app/commands.ts](https://github.com/satheesh1997/hckre-cli/blob/v3.0.2/dist/commands/app/commands.ts)_
 
 ## `hckre app:deploy`
 
@@ -104,7 +104,7 @@ DESCRIPTION
   Deploy the application
 ```
 
-_See code: [dist/commands/app/deploy.ts](https://github.com/satheesh1997/hckre-cli/blob/v3.0.1/dist/commands/app/deploy.ts)_
+_See code: [dist/commands/app/deploy.ts](https://github.com/satheesh1997/hckre-cli/blob/v3.0.2/dist/commands/app/deploy.ts)_
 
 ## `hckre app:init`
 
@@ -118,7 +118,7 @@ DESCRIPTION
   Initialize an application
 ```
 
-_See code: [dist/commands/app/init.ts](https://github.com/satheesh1997/hckre-cli/blob/v3.0.1/dist/commands/app/init.ts)_
+_See code: [dist/commands/app/init.ts](https://github.com/satheesh1997/hckre-cli/blob/v3.0.2/dist/commands/app/init.ts)_
 
 ## `hckre app:run`
 
@@ -132,7 +132,7 @@ DESCRIPTION
   Run a command
 ```
 
-_See code: [dist/commands/app/run.ts](https://github.com/satheesh1997/hckre-cli/blob/v3.0.1/dist/commands/app/run.ts)_
+_See code: [dist/commands/app/run.ts](https://github.com/satheesh1997/hckre-cli/blob/v3.0.2/dist/commands/app/run.ts)_
 
 ## `hckre app:start`
 
@@ -146,7 +146,7 @@ DESCRIPTION
   Start the application
 ```
 
-_See code: [dist/commands/app/start.ts](https://github.com/satheesh1997/hckre-cli/blob/v3.0.1/dist/commands/app/start.ts)_
+_See code: [dist/commands/app/start.ts](https://github.com/satheesh1997/hckre-cli/blob/v3.0.2/dist/commands/app/start.ts)_
 
 ## `hckre app:test`
 
@@ -160,7 +160,7 @@ DESCRIPTION
   Test the application
 ```
 
-_See code: [dist/commands/app/test.ts](https://github.com/satheesh1997/hckre-cli/blob/v3.0.1/dist/commands/app/test.ts)_
+_See code: [dist/commands/app/test.ts](https://github.com/satheesh1997/hckre-cli/blob/v3.0.2/dist/commands/app/test.ts)_
 
 ## `hckre autocomplete [SHELL]`
 
@@ -203,7 +203,7 @@ DESCRIPTION
   Connect to EC2 instance via SSM
 ```
 
-_See code: [dist/commands/aws/ec2.ts](https://github.com/satheesh1997/hckre-cli/blob/v3.0.1/dist/commands/aws/ec2.ts)_
+_See code: [dist/commands/aws/ec2.ts](https://github.com/satheesh1997/hckre-cli/blob/v3.0.2/dist/commands/aws/ec2.ts)_
 
 ## `hckre aws:init`
 
@@ -217,7 +217,7 @@ DESCRIPTION
   Initialize AWS command
 ```
 
-_See code: [dist/commands/aws/init.ts](https://github.com/satheesh1997/hckre-cli/blob/v3.0.1/dist/commands/aws/init.ts)_
+_See code: [dist/commands/aws/init.ts](https://github.com/satheesh1997/hckre-cli/blob/v3.0.2/dist/commands/aws/init.ts)_
 
 ## `hckre aws:login`
 
@@ -231,7 +231,7 @@ DESCRIPTION
   Login via SSO
 ```
 
-_See code: [dist/commands/aws/login.ts](https://github.com/satheesh1997/hckre-cli/blob/v3.0.1/dist/commands/aws/login.ts)_
+_See code: [dist/commands/aws/login.ts](https://github.com/satheesh1997/hckre-cli/blob/v3.0.2/dist/commands/aws/login.ts)_
 
 ## `hckre aws:profiles`
 
@@ -248,7 +248,7 @@ DESCRIPTION
   Manage aws profiles
 ```
 
-_See code: [dist/commands/aws/profiles.ts](https://github.com/satheesh1997/hckre-cli/blob/v3.0.1/dist/commands/aws/profiles.ts)_
+_See code: [dist/commands/aws/profiles.ts](https://github.com/satheesh1997/hckre-cli/blob/v3.0.2/dist/commands/aws/profiles.ts)_
 
 ## `hckre commands`
 
@@ -311,7 +311,7 @@ DESCRIPTION
   display information about cli
 ```
 
-_See code: [dist/commands/info.ts](https://github.com/satheesh1997/hckre-cli/blob/v3.0.1/dist/commands/info.ts)_
+_See code: [dist/commands/info.ts](https://github.com/satheesh1997/hckre-cli/blob/v3.0.2/dist/commands/info.ts)_
 
 ## `hckre init`
 
@@ -325,7 +325,7 @@ DESCRIPTION
   Initialize CLI tool
 ```
 
-_See code: [dist/commands/init.ts](https://github.com/satheesh1997/hckre-cli/blob/v3.0.1/dist/commands/init.ts)_
+_See code: [dist/commands/init.ts](https://github.com/satheesh1997/hckre-cli/blob/v3.0.2/dist/commands/init.ts)_
 
 ## `hckre update [CHANNEL]`
 
